@@ -94,6 +94,28 @@ The database `fitnessclub` contains 6 tables:
 | `classes` | scheduled classes |
 | `class_registrations` | clients registered to classes |
 
+## Screenshots
+
+**Main window**
+
+![Main window](screenshots/Mainform.png)
+
+**Clients**
+
+![Clients](screenshots/Clientsform.png)
+
+**Trainers**
+
+![Trainers](screenshots/Trainersform.png)
+
+**Visits**
+
+![Visits](screenshots/Visitsform.png)
+
+**Classes**
+
+![Classes](screenshots/Classesform.png)
+
 ## Author
 
 **Anastasiya** — final-year Software Engineering student, Odesa, Ukraine
