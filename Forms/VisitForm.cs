@@ -25,10 +25,10 @@ namespace fitnessclub
             {
                 dgvVisits.DataSource = _visitRepo.GetAll();
 
- 
+
                 if (dgvVisits.Columns["ClientId"] != null) dgvVisits.Columns["ClientId"].Visible = false;
 
-                
+
                 if (dgvVisits.Columns["Id"] != null) dgvVisits.Columns["Id"].HeaderText = "ID Візиту";
                 if (dgvVisits.Columns["ClientName"] != null) dgvVisits.Columns["ClientName"].HeaderText = "ПІБ Клієнта";
                 if (dgvVisits.Columns["VisitDate"] != null) dgvVisits.Columns["VisitDate"].HeaderText = "Дата та час";
@@ -39,7 +39,7 @@ namespace fitnessclub
             }
         }
 
-      
+
         private void UpdateStats()
         {
             try
@@ -55,10 +55,10 @@ namespace fitnessclub
             }
         }
 
-      
+
         private void btnRegisterVisit_Click(object sender, EventArgs e)
         {
-           
+
             if (string.IsNullOrWhiteSpace(txtClientId.Text) || !int.TryParse(txtClientId.Text, out int clientId))
             {
                 MessageBox.Show("Будь ласка, введіть коректний числовий ID клієнта!", "Увага", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -67,22 +67,27 @@ namespace fitnessclub
 
             try
             {
-                
+
                 _visitRepo.RegisterVisit(clientId);
 
                 MessageBox.Show("Візит успішно зареєстровано!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                txtClientId.Clear(); 
+                txtClientId.Clear();
 
-                
+
                 LoadVisits();
                 UpdateStats();
             }
             catch (Exception ex)
             {
-                
+
                 MessageBox.Show($"Не вдалося зареєструвати візит. Перевірте, чи існує клієнт з ID = {clientId}.\nТехнічна помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvVisits_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

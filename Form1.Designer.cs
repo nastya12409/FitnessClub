@@ -33,11 +33,12 @@
             // 
             // panelHeader
             // 
-            panelHeader.BackColor = SystemColors.ActiveCaption;
+            panelHeader.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            panelHeader.BackColor = SystemColors.Menu;
             panelHeader.Controls.Add(lblTotalTrainers);
             panelHeader.Controls.Add(lblTodayVisits);
             panelHeader.Controls.Add(lblTotalClients);
-            panelHeader.Location = new Point(22, 119);
+            panelHeader.Location = new Point(222, 44);
             panelHeader.Name = "panelHeader";
             panelHeader.Size = new Size(427, 231);
             panelHeader.TabIndex = 0;
@@ -71,48 +72,57 @@
             // 
             // btnClients
             // 
-            btnClients.Location = new Point(477, 166);
+            btnClients.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnClients.BackColor = SystemColors.Info;
+            btnClients.Location = new Point(30, 337);
             btnClients.Name = "btnClients";
             btnClients.Size = new Size(168, 34);
             btnClients.TabIndex = 1;
             btnClients.Text = "👥 Клієнти клубу";
-            btnClients.UseVisualStyleBackColor = true;
+            btnClients.UseVisualStyleBackColor = false;
             btnClients.Click += btnClients_Click;
             // 
             // btnTrainers
             // 
-            btnTrainers.Location = new Point(477, 66);
+            btnTrainers.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTrainers.BackColor = SystemColors.Info;
+            btnTrainers.Location = new Point(79, 424);
             btnTrainers.Name = "btnTrainers";
             btnTrainers.Size = new Size(252, 34);
             btnTrainers.TabIndex = 2;
             btnTrainers.Text = "💪 Тренери та спеціалізація";
-            btnTrainers.UseVisualStyleBackColor = true;
+            btnTrainers.UseVisualStyleBackColor = false;
             btnTrainers.Click += btnTrainers_Click;
             // 
             // btnClasses
             // 
-            btnClasses.Location = new Point(477, 395);
+            btnClasses.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnClasses.BackColor = SystemColors.Info;
+            btnClasses.Location = new Point(658, 337);
             btnClasses.Name = "btnClasses";
             btnClasses.Size = new Size(180, 34);
             btnClasses.TabIndex = 3;
             btnClasses.Text = "📅 Розклад занять";
-            btnClasses.UseVisualStyleBackColor = true;
+            btnClasses.UseVisualStyleBackColor = false;
             btnClasses.Click += btnClasses_Click;
             // 
             // btnVisits
             // 
-            btnVisits.Location = new Point(477, 283);
+            btnVisits.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnVisits.BackColor = SystemColors.Info;
+            btnVisits.Location = new Point(530, 424);
             btnVisits.Name = "btnVisits";
-            btnVisits.Size = new Size(196, 34);
+            btnVisits.Size = new Size(250, 34);
             btnVisits.TabIndex = 4;
             btnVisits.Text = "🔑 Реєстрація візитів";
-            btnVisits.UseVisualStyleBackColor = true;
+            btnVisits.UseVisualStyleBackColor = false;
             btnVisits.Click += btnVisits_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.WindowFrame;
             ClientSize = new Size(878, 494);
             Controls.Add(btnVisits);
             Controls.Add(btnClasses);
@@ -121,7 +131,6 @@
             Controls.Add(panelHeader);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Фітнес-клуб \"Титан\" - панель управління";
             Load += Form1_Load;
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();

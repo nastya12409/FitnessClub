@@ -1,5 +1,5 @@
-﻿using fitnessclub.Database; // Подключаем нашу базу данных
-using fitnessclub.Models;   // Подключаем модели, где теперь живет класс Client
+﻿using fitnessclub.Database; 
+using fitnessclub.Models;   
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace fitnessclub
         public List<Client> GetAll(string search = "")
         {
             var clients = new List<Client>();
-            // ИСПРАВЛЕНО: вызываем усеченный DbConnection. Метод уже сам делает .Open()!
+            // Викликаємо DbConnection
             using var conn = DbConnection.GetConnection();
 
             var sql = @"SELECT id, first_name, last_name, phone, email, registration_date

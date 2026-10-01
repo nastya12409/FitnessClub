@@ -5,7 +5,7 @@ namespace fitnessclub
 {
     public partial class Form1 : Form
     {
-        // Создаем репозитории для сбора статистики с базы данных
+        // Створюємо репозиторії для сбору статистики з бази даних
         private readonly ClientRepository _clientRepo = new ClientRepository();
         private readonly TrainerRepository _trainerRepo = new TrainerRepository();
         private readonly VisitRepository _visitRepo = new VisitRepository();
@@ -15,13 +15,13 @@ namespace fitnessclub
             InitializeComponent();
         }
 
-        // Событие загрузки главной формы — сразу обновляем цифры на панели
+        // Завантаження головної форми 
         private void Form1_Load(object sender, EventArgs e)
         {
             RefreshStats();
         }
 
-        // Метод для вывода актуальной статистики из PostgreSQL
+        // Метод для виводу статистики з PostgreSQL
         private void RefreshStats()
         {
             try
@@ -36,15 +36,15 @@ namespace fitnessclub
             }
         }
 
-        // КНОПКА: Открыть форму клиентов
+        // Відкрити форму клієнтів
         private void btnClients_Click(object sender, EventArgs e)
         {
             ClientForm clientForm = new ClientForm();
             clientForm.ShowDialog();
-            RefreshStats(); // Пересчитываем статистику после закрытия окна
+            RefreshStats(); 
         }
 
-        // КНОПКА: Открыть форму тренеров
+        //Відкрити форму тренерів
         private void btnTrainers_Click(object sender, EventArgs e)
         {
             TrainerForm trainerForm = new TrainerForm();
@@ -52,7 +52,7 @@ namespace fitnessclub
             RefreshStats();
         }
 
-        // КНОПКА: Открыть форму регистрации на занятия
+        //Відкрити форму реєстрації
         private void btnClasses_Click(object sender, EventArgs e)
         {
             ClassRegistrationForm registrationForm = new ClassRegistrationForm(1, "Загальне заняття");
@@ -60,7 +60,7 @@ namespace fitnessclub
             RefreshStats();
         }
 
-        // КНОПКА: Открыть форму визитов
+        // Відкрити форму відвідувань
         private void btnVisits_Click(object sender, EventArgs e)
         {
             VisitForm visitForm = new VisitForm();

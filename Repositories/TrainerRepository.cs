@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Npgsql;
-using fitnessclub.Models; // ИСПРАВЛЕНО: правильный namespace для моделей
-// Жесткий алиас на подключение к базе данных, чтобы С# точно его нашел
+using fitnessclub.Models; 
 using DbConnection = fitnessclub.Database.DbConnection;
 
 namespace fitnessclub
@@ -12,7 +11,6 @@ namespace fitnessclub
         public List<Trainer> GetAll(string search = "")
         {
             var trainers = new List<Trainer>();
-            // ИСПРАВЛЕНО: используем правильный DbConnection
             using var conn = DbConnection.GetConnection();
 
             var sql = @"SELECT id, first_name, last_name, specialization FROM trainers
@@ -48,7 +46,7 @@ namespace fitnessclub
             cmd.Parameters.AddWithValue("ln", trainer.LastName);
             cmd.Parameters.AddWithValue("sp", string.IsNullOrEmpty(trainer.Specialization) ? DBNull.Value : (object)trainer.Specialization);
 
-            return Convert.ToInt32(cmd.ExecuteScalar()); // Безопасное приведение для Postgres
+            return Convert.ToInt32(cmd.ExecuteScalar()); 
         }
 
         public void Update(Trainer trainer)

@@ -17,15 +17,14 @@ namespace fitnessclub
             LoadData();
         }
 
-        // Загрузка данных (принимает строку поиска, по умолчанию — пустая)
+        // Завантаження даних
         private void LoadData(string searchKeyword = "")
         {
             try
             {
-                // Передаем строку поиска в репозиторий
+                // Передаємо рядок пошуку
                 dgvTrainers.DataSource = _trainerRepo.GetAll(searchKeyword);
 
-                // Красиво переименовываем заголовки колонок в таблице
                 if (dgvTrainers.Columns["Id"] != null) dgvTrainers.Columns["Id"].HeaderText = "ID";
                 if (dgvTrainers.Columns["FirstName"] != null) dgvTrainers.Columns["FirstName"].HeaderText = "Ім'я";
                 if (dgvTrainers.Columns["LastName"] != null) dgvTrainers.Columns["LastName"].HeaderText = "Прізвище";
@@ -37,14 +36,14 @@ namespace fitnessclub
             }
         }
 
-        // КНОПКА: Пошук за прізвищем (ТЕПЕРЬ РАБОЧАЯ!)
+        // Пошук за прізвищем
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim();
-            LoadData(keyword); // Перезагружаем таблицу с учетом фильтра
+            LoadData(keyword); 
         }
 
-        // КНОПКА: Додати тренера (ТЕПЕРЬ РАБОЧАЯ!)
+        // Додати тренера 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtLastName.Text))
@@ -55,7 +54,7 @@ namespace fitnessclub
 
             try
             {
-                // Собираем объект Trainer из полей ввода
+                // Збираємо об'єкт Trainer з полей ввода
                 fitnessclub.Models.Trainer newTrainer = new fitnessclub.Models.Trainer
                 {
                     FirstName = txtFirstName.Text.Trim(),
@@ -63,12 +62,12 @@ namespace fitnessclub
                     Specialization = txtSpecialization.Text.Trim()
                 };
 
-                // Отправляем в базу
+                // Відправляємо в базу
                 _trainerRepo.Add(newTrainer);
 
                 MessageBox.Show("Тренера успішно додано до бази!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Сбрасываем поля и обновляем список
+               //Обновлюємо список
                 btnClear_Click(sender, e);
                 LoadData();
             }
@@ -78,7 +77,7 @@ namespace fitnessclub
             }
         }
 
-        // КНОПКА: Видалити тренера (ТЕПЕРЬ РАБОЧАЯ!)
+        //Видалити тренера 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvTrainers.CurrentRow == null)
@@ -97,7 +96,7 @@ namespace fitnessclub
                 {
                     _trainerRepo.Delete(trainerId);
                     MessageBox.Show("Тренера видалено з бази.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData(); // Обновляем сетку
+                    LoadData(); 
                 }
             }
             catch (Exception ex)
@@ -106,14 +105,14 @@ namespace fitnessclub
             }
         }
 
-        // КНОПКА: Оновити список
+        // Оновити список
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            txtSearch.Clear(); // Очищаем строку поиска при полном обновлении
+            txtSearch.Clear(); 
             LoadData();
         }
 
-        // КНОПКА: Очистити форму
+        //Очистити форму
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtFirstName.Clear();

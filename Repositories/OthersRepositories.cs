@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Npgsql;
-// Жестко привязываем класс подключения, чтобы у компилятора не было шансов запутаться
 using DbConnection = fitnessclub.Database.DbConnection;
 
 namespace fitnessclub
